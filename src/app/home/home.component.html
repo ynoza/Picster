@@ -2,6 +2,18 @@
     <div class="container">
         <h1>Hi {{user.firstName}}!</h1>
         <!-- <p>You're logged in with Angular 10!!</p> -->
-        <p><a routerLink="/users">Manage Users</a></p>
+        <div [hidden]="!isAdmin">
+            <p><a routerLink="/users">Manage Users</a></p>
+        </div>
+        <!-- <image-upload
+        [max]="100"
+        [buttonCaption]="'Select Images!'"
+        [dropBoxMessage]="'Drop your images here!'"
+        [extensions]="['jpg','png','gif']"
+        [class]="'customClass'"
+        (removed)="onRemoved($event)"
+        (uploadFinished)="onUploadFinished($event)"
+        (uploadStateChanged)="onUploadStateChanged($event)">
+        </image-upload> -->
     </div>
 </div>
