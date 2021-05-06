@@ -5,15 +5,17 @@
         <div [hidden]="!isAdmin">
             <p><a routerLink="/users">Manage Users</a></p>
         </div>
-        <!-- <image-upload
+        <image-upload
         [max]="100"
-        [buttonCaption]="'Select Images!'"
-        [dropBoxMessage]="'Drop your images here!'"
+        [maxFileSize]="1048576"
+        [fileTooLargeMessage]="'Image too large!'"
+        [buttonCaption]="'Drop your Images Here'"
+        class="customClass"
+        [dropBoxMessage]="''"
         [extensions]="['jpg','png','gif']"
-        [class]="'customClass'"
         (removed)="onRemoved($event)"
         (uploadFinished)="onUploadFinished($event)"
         (uploadStateChanged)="onUploadStateChanged($event)">
-        </image-upload> -->
+        </image-upload>
     </div>
 </div>

@@ -1,72 +1,76 @@
-﻿import { Component } from '@angular/core';
+﻿import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+import { Component } from '@angular/core';
 
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
-
+import {FileHolder} from 'angular2-image-upload';
+import { OnInit } from '@angular/core';
 // declare var require: any
 
 @Component({ templateUrl: 'home.component.html' })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
     user: User;
     isAdmin: Boolean;
+    SERVER_URL = "http://localhost:4000/upload";
+    uploadForm: FormGroup; 
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.user = this.accountService.userValue;
         if (this.user && this.user.username === "admin") this.isAdmin=true;
         else this.isAdmin=false;
+        
     }
 
-    // onRemoved(event){
-    //     console.log(event.file);
+    ngOnInit() {
+        this.uploadForm = this.formBuilder.group({
+          profile: ['']
+        });
+        
+      }
+      
+
+    // onFileSelect(event) {
+    //     if (event.target.files.length > 0) {
+    //         const file = event.target.files[0];
+    //         this.uploadForm.get('profile').setValue(file);
+    //     }
     // }
 
-    // onUploadFinished(event){
-    //     const multer = require('multer');
-    //     // const path = require('path');
+    // onSubmit() {
+    //     const formData = new FormData();
+    //     formData.append('myImage', this.uploadForm.get('profile').value);
+    //     console.log(formData);
+    //     this.http.post<any>(this.SERVER_URL, formData).subscribe(
+    //       (res) => console.log(res),
+    //       (err) => console.log(err)
+    //     );
+    //   }
 
-    //     // // Set The Storage Engine
-    //     // const storage = multer.diskStorage({
-    //     //   destination: './public/uploads/',
-    //     //   filename: function(req, file, cb){
-    //     //     cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    //     //   }
-    //     // });
+    onRemoved(event){
+        console.log(event.file);
+    }
 
-    //     // // Init Upload
-    //     // const upload = multer({
-    //     //   storage: storage,
-    //     //   limits:{fileSize: 1000000},
-    //     // });
+    onUploadFinished(event) {
+        console.log(event);
+        // if (event.target.files.length > 0) {
+        const file = event.file;
+        this.uploadForm.get('profile').setValue(file);
+        // }
 
-    //     // const req = event.serverResponse.status;
-    //     // const res = event.serverResponse.response;
-    //     // upload(req, res, (err) => {
-    //     //     if(err){
-    //     //       res.render('home', {
-    //     //         msg: err
-    //     //       });
-    //     //     } else {
-    //     //       if(req.file == undefined){
-    //     //         res.render('home', {
-    //     //           msg: 'Error: No File Selected!'
-    //     //         });
-    //     //       } else {
-    //     //         res.render('home', {
-    //     //           msg: 'File Uploaded!',
-    //     //           file: `uploads/${req.file.filename}`
-    //     //         });
-    //     //       }
-    //     //     }
-    //     //   });
+        const formData = new FormData();
+        formData.append('myImage', this.uploadForm.get('profile').value);
+        console.log(formData);
+        this.http.post<any>(this.SERVER_URL, formData).subscribe(
+          (res) => console.log(res),
+          (err) => console.log(err)
+        );
+      }
 
-    //     // console.log(upload.single('image'))
-    //     console.log(event)
-    //     console.log(event.file);
-    // }
-
-    // onUploadStateChanged(event){
-    //     console.log(event.file);
-    // }
+    onUploadStateChanged(event){
+        console.log(event.file);
+    }
 
 }
 
