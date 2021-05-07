@@ -38,11 +38,9 @@ export class HomeComponent implements OnInit {
         console.log(event.file);
 
         const file = event.file;
-        this.uploadForm.get('profile').setValue(file);
         let body = new HttpParams();
-        body = body.set('fileName', file.name);
-        // const formData = new FormData();
-        // formData.append('myImage', this.uploadForm.get('profile').value);
+        body = body.set('fileName', this.user.username+ "-" +file.name);
+
         console.log(file.name);
         this.http.post<any>(this.SERVER_URL+'/delete', body).subscribe(
           (res) => console.log(res),
@@ -56,9 +54,10 @@ export class HomeComponent implements OnInit {
         const file = event.file;
         this.uploadForm.get('profile').setValue(file);
         // }
-
+        // console.log(file);
         const formData = new FormData();
-        formData.append('myImage', this.uploadForm.get('profile').value);
+        formData.append('myImage', this.uploadForm.get('profile').value, this.user.username + "-" + file.name);
+        // formData.append('user', this.user.username);
         console.log(formData);
         this.http.post<any>(this.SERVER_URL+'/upload', formData).subscribe(
           (res) => console.log(res),
@@ -72,7 +71,11 @@ export class HomeComponent implements OnInit {
 
     getImages(){
         console.log("At getImages");
-        this.http.get<any>(this.SERVER_URL+'/getUploads').subscribe(
+
+        let body = new HttpParams();
+        body = body.set('username', this.user.username);
+
+        this.http.post<any>(this.SERVER_URL+'/getUploads', body).subscribe(
             (res) => {
                 console.log(res);
                 this.variableName=res;
