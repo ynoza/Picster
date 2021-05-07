@@ -15,13 +15,14 @@ export class HomeComponent implements OnInit {
     isAdmin: Boolean;
     SERVER_URL = "http://localhost:4000";
     uploadForm: FormGroup; 
-    variableName=['http://localhost:4000/public/uploads/cat.png', 'http://localhost:4000/public/uploads/cat_2.0.png']
+    variableName=[];
 
     constructor(private accountService: AccountService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.user = this.accountService.userValue;
         if (this.user && this.user.username === "admin") this.isAdmin=true;
         else this.isAdmin=false;
         
+        this.getImages();
     }
 
     ngOnInit() {
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
           profile: ['']
         });
         
+        // this.getImages();
       }
       
 
@@ -68,12 +70,16 @@ export class HomeComponent implements OnInit {
         console.log(event.file);
     }
 
-    // getImages(){
-    //     this.http.get<any>(this.SERVER_URL+'/getUploads').subscribe(
-    //         (res) => console.log(res),
-    //         (err) => console.log(err)
-    //       );
-    // }
+    getImages(){
+        console.log("At getImages");
+        this.http.get<any>(this.SERVER_URL+'/getUploads').subscribe(
+            (res) => {
+                console.log(res);
+                this.variableName=res;
+            },
+            (err) => console.log(err),
+          );
+    }
 
 }
 
