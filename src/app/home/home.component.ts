@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
           profile: ['']
         });
         
-        // this.getImages();
       }
       
 
@@ -41,7 +40,6 @@ export class HomeComponent implements OnInit {
         let body = new HttpParams();
         body = body.set('fileName', this.user.username+ "-" +file.name);
 
-        console.log(file.name);
         this.http.post<any>(this.SERVER_URL+'/delete', body).subscribe(
           (res) => console.log(res),
           (err) => console.log(err)
@@ -50,15 +48,13 @@ export class HomeComponent implements OnInit {
 
     onUploadFinished(event) {
         console.log(event);
-        // if (event.target.files.length > 0) {
+
         const file = event.file;
         this.uploadForm.get('profile').setValue(file);
-        // }
-        // console.log(file);
+
         const formData = new FormData();
         formData.append('myImage', this.uploadForm.get('profile').value, this.user.username + "-" + file.name);
-        // formData.append('user', this.user.username);
-        console.log(formData);
+   
         this.http.post<any>(this.SERVER_URL+'/upload', formData).subscribe(
           (res) => console.log(res),
           (err) => console.log(err)
@@ -70,7 +66,6 @@ export class HomeComponent implements OnInit {
     }
 
     getImages(){
-        console.log("At getImages");
 
         let body = new HttpParams();
         body = body.set('username', this.user.username);
