@@ -6,16 +6,20 @@
             <p><a routerLink="/users">Manage Users</a></p>
         </div>
         <image-upload
-        [max]="100"
-        [maxFileSize]="1048576"
-        [fileTooLargeMessage]="'Image too large!'"
-        [buttonCaption]="'Drop your Images Here'"
-        class="customClass"
-        [dropBoxMessage]="''"
-        [extensions]="['jpg','png','gif']"
-        (removed)="onRemoved($event)"
-        (uploadFinished)="onUploadFinished($event)"
-        (uploadStateChanged)="onUploadStateChanged($event)">
+            [max]="100"
+            [maxFileSize]="1048576"
+            [fileTooLargeMessage]="'Image too large!'"
+            [buttonCaption]="'Drop your Images Here'"
+            class="customClass"
+            [dropBoxMessage]="''"
+            [extensions]="['jpg','png','gif']"
+            [uploadedFiles]="variableName"
+            
+            (removed)="onRemoved($event)"
+            (uploadFinished)="onUploadFinished($event)"
+            (uploadStateChanged)="onUploadStateChanged($event)">
         </image-upload>
+
+        <!-- <img src="http://localhost:4000/public/uploads/cat.png" alt="Cat"> -->
     </div>
 </div>
