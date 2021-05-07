@@ -52,8 +52,20 @@ export class HomeComponent implements OnInit {
         const file = event.file;
         this.uploadForm.get('profile').setValue(file);
 
+
+        let newFileName = "";
+        for (let i=0; i < file.name.length; i++){
+          const c = file.name.charAt(i);
+          if (c === '(' || c === ')' || c === '!' || c === '*' || c === '~'){
+            newFileName = newFileName.concat("---");
+          }
+          else {
+            newFileName = newFileName.concat(c);
+          }
+        }
+
         const formData = new FormData();
-        formData.append('myImage', this.uploadForm.get('profile').value, this.user.username + "-" + file.name);
+        formData.append('myImage', this.uploadForm.get('profile').value, this.user.username + "-" + newFileName);
    
         this.http.post<any>(this.SERVER_URL+'/upload', formData).subscribe(
           (res) => console.log(res),
