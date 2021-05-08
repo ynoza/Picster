@@ -2,7 +2,8 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark navbar-fixed" *ngIf="user">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" routerLink="/gallery" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Gallery</a>
+        <a class="nav-item nav-link ml-auto" (click)="logout()">Logout</a>
     </div>
 </nav>
 

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { NgxMasonryModule } from 'ngx-masonry';
 import { GalleryComponent } from './gallery/gallery.component';
+import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { GalleryComponent } from './gallery/gallery.component';
         AppRoutingModule,
         ImageUploadModule.forRoot(),
         FormsModule,
-        NgxMasonryModule
+        NgxMasonryModule,
+        MasonryGalleryModule
     ],
     declarations: [
         AppComponent,

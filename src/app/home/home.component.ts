@@ -1,5 +1,6 @@
 ﻿import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 
 import { Component } from '@angular/core';
 
@@ -16,12 +17,6 @@ export class HomeComponent implements OnInit {
     SERVER_URL = "http://localhost:4000";
     uploadForm: FormGroup; 
     variableName=[];
-
-    masonryItems = [
-      { title: 'item 1' },
-      { title: 'item 2' },
-      { title: 'item 3' },
-    ];
 
     constructor(private accountService: AccountService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.user = this.accountService.userValue;
@@ -84,7 +79,7 @@ export class HomeComponent implements OnInit {
     }
 
     getImages(){
-
+        this.variableName=[];
         let body = new HttpParams();
         body = body.set('username', this.user.username);
 
