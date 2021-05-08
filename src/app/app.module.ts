@@ -12,6 +12,9 @@ import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
 import { FormsModule } from '@angular/forms';
 
+import { NgxMasonryModule } from 'ngx-masonry';
+import { GalleryComponent } from './gallery/gallery.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -19,12 +22,14 @@ import { FormsModule } from '@angular/forms';
         HttpClientModule,
         AppRoutingModule,
         ImageUploadModule.forRoot(),
-        FormsModule
+        FormsModule,
+        NgxMasonryModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
+        HomeComponent,
+        GalleryComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

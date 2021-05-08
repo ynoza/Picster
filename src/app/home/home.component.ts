@@ -17,6 +17,12 @@ export class HomeComponent implements OnInit {
     uploadForm: FormGroup; 
     variableName=[];
 
+    masonryItems = [
+      { title: 'item 1' },
+      { title: 'item 2' },
+      { title: 'item 3' },
+    ];
+
     constructor(private accountService: AccountService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.user = this.accountService.userValue;
         if (this.user && this.user.username === "admin") this.isAdmin=true;
