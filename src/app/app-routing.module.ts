@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
 import { GalleryComponent } from './gallery/gallery.component';
+import { ShowroomComponent } from './showroom/showroom.component';
 import { AuthGuard } from './_helpers';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
     { path: 'account', loadChildren: accountModule },
     { path: 'gallery', component: GalleryComponent, canActivate: [AuthGuard] },
+    { path: 'showroom', component: ShowroomComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

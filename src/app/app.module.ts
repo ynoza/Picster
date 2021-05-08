@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 
 import { NgxMasonryModule } from 'ngx-masonry';
 import { GalleryComponent } from './gallery/gallery.component';
-import { MasonryGalleryModule } from 'ngx-masonry-gallery';
+import { MasonryGalleryModule } from 'ngx-masonry-gallery';;
+import { ShowroomComponent } from './showroom/showroom.component'
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { MasonryGalleryModule } from 'ngx-masonry-gallery';
         AppComponent,
         AlertComponent,
         HomeComponent,
-        GalleryComponent
+        GalleryComponent,
+        ShowroomComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
