@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowroomComponent implements OnInit {
   variableName=[];
+  HEROKU_SERVER_URL = "https://picsterserver.herokuapp.com";
   SERVER_URL = "http://localhost:4000";
   temp = Array;
   math = Math;
@@ -23,7 +24,7 @@ export class ShowroomComponent implements OnInit {
   getImages(){
     this.variableName=[];
 
-    this.http.get<any>(this.SERVER_URL+'/imagesAndMapPair').subscribe(
+    this.http.get<any>(this.HEROKU_SERVER_URL+'/imagesAndMapPair').subscribe(
         (res) => {
             console.log(res);
             this.variableName=res;

@@ -14,6 +14,7 @@ import { OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
     user: User;
     isAdmin: Boolean;
+    HEROKU_SERVER_URL = "https://picsterserver.herokuapp.com";
     SERVER_URL = "http://localhost:4000";
     uploadForm: FormGroup; 
     variableName=[];
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
         let body = new HttpParams();
         body = body.set('fileName', this.user.username+ "-" +file.name);
 
-        this.http.post<any>(this.SERVER_URL+'/delete', body).subscribe(
+        this.http.post<any>(this.HEROKU_SERVER_URL+'/delete', body).subscribe(
           (res) => console.log(res),
           (err) => console.log(err)
         );
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
         const formData = new FormData();
         formData.append('myImage', this.uploadForm.get('profile').value, this.user.username + "-" + newFileName);
    
-        this.http.post<any>(this.SERVER_URL+'/upload', formData).subscribe(
+        this.http.post<any>(this.HEROKU_SERVER_URL+'/upload', formData).subscribe(
           (res) => console.log(res),
           (err) => console.log(err)
         );
@@ -83,7 +84,7 @@ export class HomeComponent implements OnInit {
         let body = new HttpParams();
         body = body.set('username', this.user.username);
 
-        this.http.post<any>(this.SERVER_URL+'/getUploads', body).subscribe(
+        this.http.post<any>(this.HEROKU_SERVER_URL+'/getUploads', body).subscribe(
             (res) => {
                 console.log(res);
                 this.variableName=res;
