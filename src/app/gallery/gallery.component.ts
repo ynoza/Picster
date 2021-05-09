@@ -21,8 +21,8 @@ export class GalleryComponent implements OnInit{
     this.getImages();
 }
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    
   }
 
   public get images(): IMasonryGalleryImage[] {

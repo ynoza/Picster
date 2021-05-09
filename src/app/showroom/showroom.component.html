@@ -4,8 +4,30 @@
     <h2 style="color: rgb(212, 17, 212); text-align: center;">Welcome to the showroom where everyone's images can be viewed!</h2>
     <p style="text-align: center;">The tags for the images have been determined through a tensorflow image classifier; try seeing if you can find more resemblances than the AI!</p>
 
+    <!-- <div *ngFor="let data of variableName; let i = index; let length = count">
+        <div *ngIf="i*3<count">
+            <p>hiiiii</p>
+        </div>
+      </div> -->
+      <!-- <div *ngFor="let t of temp(math.ceil(arr.length/3)); let i = index" class="row">
+        <div *ngFor="let item of arr.slice(3*i,3*i + 3);" class="item">
+          {{item}}
+        </div>
+      </div> -->
 
-    <div class="card-group">
+    <div class="card-group" *ngFor="let t of temp(math.ceil(variableName.length/3)); let i = index">
+        <div class="card" *ngFor="let item of variableName.slice(3*i,3*i + 3);">
+            <img class="card-img-top" object-fit="cover" src={{item.imageURL}} alt="Card image cap">
+            <div class="card-body">
+            <p class="card-text">{{item.desc}}</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card-group">
     <div class="card">
         <img class="card-img-top" object-fit="cover" src="http://localhost:4000/public/uploads/yoshimario14-_DSC5399.jpg" alt="Card image cap">
         
@@ -49,6 +71,6 @@
         <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
         </div>
-    </div>
-    </div>
+    </div> -->
+    </div> 
 </div>
