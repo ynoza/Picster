@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-gallery',
@@ -13,8 +14,6 @@ import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 export class GalleryComponent implements OnInit{
   variableName=[];
   user: User;
-  HEROKU_SERVER_URL = "https://picsterserver.herokuapp.com";
-  SERVER_URL = "http://localhost:4000";
 
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private http: HttpClient) {
     this.user = this.accountService.userValue;
@@ -37,7 +36,7 @@ export class GalleryComponent implements OnInit{
         let body = new HttpParams();
         body = body.set('username', this.user.username);
 
-        this.http.post<any>(this.HEROKU_SERVER_URL+'/getUploads', body).subscribe(
+        this.http.post<any>(`${environment.apiUrl}/getUploads`, body).subscribe(
             (res) => {
                 console.log(res);
                 this.variableName=res;
