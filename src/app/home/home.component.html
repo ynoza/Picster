@@ -6,12 +6,12 @@
             <p><a routerLink="/users">Manage Users</a></p>
         </div>
         <image-upload
-            [max]="5"
+            [max]="10"
             [maxFileSize]="1048576666"
             [fileTooLargeMessage]="'Image too large!'"
             [buttonCaption]="'Add Images Here'"
             class="customClass"
-            [dropBoxMessage]="'Thumbnails of your images are previewed here for easy deletion and identification'"
+            [dropBoxMessage]="'Thumbnails of your images are previewed here for easy deletion and identification - only 5 images can be added together'"
             [extensions]="['jpg','png','gif']"
             [uploadedFiles]="variableName"
             (removed)="onRemoved($event)"
