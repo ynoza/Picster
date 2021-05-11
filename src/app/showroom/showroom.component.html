@@ -1,24 +1,30 @@
 <div class="p-4">
     <div class="container">
 
-    <h2 style="color: rgb(212, 17, 212); text-align: center;">Welcome to the showroom where everyone's images can be viewed!</h2>
-    <p style="text-align: center;">The tags for the images have been determined through a tensorflow image classifier: try seeing if you can find more resemblances than the AI!</p>
-    <p style="text-align: center; color: rgb(212, 17, 212); text-align: center;">Theres a known memory leak with tfjs-node and my heroku server cannot handle the excess memory it is consuming so the tag functionality has been temporarily stopped, however it works locally so feel free to clone my project if you want to check that out!</p>
-
-
-
-    <div class="card-group" *ngFor="let t of temp(math.ceil(variableName.length/3)); let i = index">
-        <div class="card" *ngFor="let item of variableName.slice(3*i,3*i + 3);">
-            <img class="card-img-top" object-fit="cover" src={{item.imageURL}} alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text" style="text-align: center;">{{item.desc}}</p>
-            </div>
-            <div class="card-footer">
-            <small class="text-muted">Updated Recently</small>
+        <h2 style="color: rgb(212, 17, 212); text-align: center;">Welcome to the showroom where everyone's images can be viewed!</h2>
+        <p style="text-align: center;">The tags for the images have been determined through a tensorflow image classifier: try seeing if you can find more resemblances than the AI!</p>
+        <div class="card-group" *ngFor="let t of temp(math.ceil(variableName.length/3)); let i = index">
+            <div class="card" *ngFor="let item of variableName.slice(3*i,3*i + 3);">
+                <img class="card-img-top" object-fit="cover" src={{item.imageURL}} alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text" style="text-align: center;">{{item.desc}}</p>
+                </div>
+                <div class="card-footer">
+                <small class="text-muted">Updated Recently</small>
+                </div>
             </div>
         </div>
     </div>
 
+</div>
 
+
+<div class="p-4">
+    <div class="container">
+        <p style="text-align: center; color: rgb(212, 17, 212); text-align: center;">Theres a known memory leak with tfjs-node and the server cannot handle the excess memory it is consuming so the tag functionality has been temporarily stopped, however it works locally so feel free to clone my project if you want to check that out!</p>
+        <figcaption style="text-align: center;">Heres an example of what the Image Classifcation tags would produce for the wedding picture below:</figcaption>
+        <div style="margin: auto;">
+            <img src={{tempImg}} style="margin: auto; display: block; border: 5px solid rgb(3, 0, 3);">
+        </div>
     </div> 
 </div>

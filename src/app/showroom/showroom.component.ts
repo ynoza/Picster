@@ -8,6 +8,7 @@ import { environment } from '@environments/environment';
 })
 export class ShowroomComponent implements OnInit {
   variableName=[];
+  tempImg=`${environment.apiUrl}/public/ai.JPG`;
   temp = Array;
   math = Math;
 
