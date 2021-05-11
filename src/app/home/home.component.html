@@ -1,5 +1,6 @@
 ﻿<div class="p-4">
     <div class="container">
+        <h2 style="color: rgb(212, 17, 212);">Hi {{user.firstName}}!</h2>
         <!-- <h1>Hi {{user.firstName}}!</h1> -->
         <!-- <p>You're logged in with Angular 10!!</p> -->
         <div [hidden]="!isAdmin">
@@ -11,7 +12,7 @@
             [fileTooLargeMessage]="'Image too large!'"
             [buttonCaption]="'Add Images Here'"
             class="customClass"
-            [dropBoxMessage]="'Thumbnails of your images are previewed here for easy deletion and identification - only 5 images can be added together'"
+            [dropBoxMessage]="'Thumbnails are previewed here for easy deletion and identification. Note only 5 images can be added at once!'"
             [extensions]="['jpg','png','gif']"
             [uploadedFiles]="variableName"
             (removed)="onRemoved($event)"

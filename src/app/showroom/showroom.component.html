@@ -2,7 +2,8 @@
     <div class="container">
 
     <h2 style="color: rgb(212, 17, 212); text-align: center;">Welcome to the showroom where everyone's images can be viewed!</h2>
-    <p style="text-align: center;">The tags for the images have been determined through a tensorflow image classifier; try seeing if you can find more resemblances than the AI!</p>
+    <p style="text-align: center;">The tags for the images have been determined through a tensorflow image classifier: try seeing if you can find more resemblances than the AI!</p>
+    <p style="text-align: center; color: rgb(212, 17, 212); text-align: center;">Theres a known memory leak with tfjs-node and my heroku server cannot handle the excess memory it is consuming so the tag functionality has been temporarily stopped, however it works locally so feel free to clone my project if you want to check that out!</p>
 
 
 
@@ -10,7 +11,7 @@
         <div class="card" *ngFor="let item of variableName.slice(3*i,3*i + 3);">
             <img class="card-img-top" object-fit="cover" src={{item.imageURL}} alt="Card image cap">
             <div class="card-body">
-                <p class="card-text">{{item.desc}}</p>
+                <p class="card-text" style="text-align: center;">{{item.desc}}</p>
             </div>
             <div class="card-footer">
             <small class="text-muted">Updated Recently</small>
